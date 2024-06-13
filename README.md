@@ -48,6 +48,7 @@ Testing mainline **6.9.2**, current status:
 * Wifi Realtek 8732BS (SDIO) - ok
 * USB2 - ok
 * DVP camera - ok (for ov2640 sccb)
+* DVP camera - ok (for friendly CAM500B ov5640 )
 * [cedrus encoding for H.264](https://linux-sunxi.org/VE_Register_guide) - ok
 
 ## Benchmarks
@@ -266,7 +267,10 @@ Interface wlan0
 
 ```
 
-##  DVP camera interface with ov2640 testing
+##  DVP camera testing
+
+
+### OV2640
 
 * get the ov2640 probed and the sun6i-csi-bridge module info
 
@@ -352,6 +356,27 @@ gst-launch-1.0 -v v4l2src device=${device} num-buffers=-1 \
 ![pine64-plus-running-with-dvp.png](images/pine64-plus-running-with-dvp.png)
 ![gst-udpsrc-cedrus-h264.png](images/gst-udpsrc-cedrus-h264.png)
 ![pin64-plus-run-with-ov2640.gif](images/pin64-plus-run-with-ov2640.gif)
+
+* Test with the FPC adapter board I drew myself.
+
+![ov2640-fpc-adapter-boards.png](images/ov2640-fpc-adapter-boards.png)
+![ov2640-video.gif](images/ov2640-video.gif)
+
+### OV5640
+
+* I found that the auto focus (AF) failed on this camera, future work will explore what the problem is, maybe a driver failure, or just this issue. I don't have another ov5640 camera to test at the moment. And compare which aspect of the problem is more likely to occur.
+
+![ov5640-video.gif](images/ov5640-video.gif)
+![ov5640-fpc-adapter-board.png](images/ov5640-fpc-adapter-board.png)
+
+
+### Drawing the PCB adapter board
+
+* Refer to both sides of  the electrical schematic diagram to  draw the FPC adapter board for facilitate testing.
+
+![pine64-dvp-camera-sch.png](images/pine64-dvp-camera-sch.png)
+![ov2640-dvp-18p-to-pine64-24p.png](images/ov2640-dvp-18p-to-pine64-24p.png)
+![ov5640-dvp-friendly-24p-to-pine64-24p.png](images/ov5640-dvp-friendly-24p-to-pine64-24p.png)
 
 ## Boot log (booting from uSD Card)
 
